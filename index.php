@@ -1,4 +1,17 @@
 <?php
+$dbopts = parse_url(getenv('index.php'));
+$app->register(new Herrera\Pdo\PdoServiceProvider(),
+               array(
+                   'pdo.dsn' => 'pgsql:dbname='.ltrim($dbopts["localhost/user_login/index.php"],'/').';host='.$dbopts["localhost"] . ';port=' . $dbopts["3306"],
+                   'pdo.username' => $dbopts["root"],
+                   'pdo.password' => $dbopts[""]
+               )
+);
+?>
+
+
+
+<?php
 session_start();
 $conn = mysqli_connect("localhost","root","","project");
 	
